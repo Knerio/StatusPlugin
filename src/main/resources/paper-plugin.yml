@@ -2,3 +2,4 @@ name: status
 version: '1.0'
 main: de.derioo.status.Main
 api-version: '1.21'
+author: "Dario"

@@ -1,0 +1,41 @@
+# Using https://docs.advntr.dev/minimessage/format.html
+
+admin-permission: "status.admin"
+
+prefix: "<white>[<green>Status<white>] <gray>"
+no-permission: "<prefix><red>Du hast keine Berechtigung für diesen Command."
+
+status:
+  delete:
+    deleted: "<prefix><green>Der Status wurde gelöscht."
+  reload:
+    reloaded: "<prefix><green>Die Konfiguration wurde neu geladen."
+  format: "<prefix><red>Diesen Command gibt es nicht!"
+  create:
+    already-in-status: "<prefix><red>Du bist bereits in einem Status."
+    too-long: "<prefix><red>Der Status ist zu lang."
+    created: "<prefix><green>Der Status wurde erfolgreich erstellt."
+  clear:
+    cleared: "<prefix><green>Der Status wurde gelöscht."
+    not-online: "<prefix><red>Der Spieler ist nicht online."
+  members:
+    header: "<prefix><green>Members (online):"
+    format: "<prefix><gray> - <1>"
+  kick:
+    kicked: "<prefix><green>Der Spieler <1> wurde gekickt."
+    is-owner: "<prefix><red>Du kannst den Owner nicht kicken."
+  invite:
+    invited: "<prefix>Du wurdest zum Status (<1>) von <2> eingeladen (<green><click:run_command:/status accept \"<3>\"><hover:show_text:'Klicke um beizutreten'>Klicke um beizutreten</hover></click></green>)."
+    invited-sender: "<prefix><green>Du hast <1> eingeladen."
+    already-invited: "<prefix><red>Der Spieler ist bereits eingeladen."
+    not-in-status: "<prefix><red>Du kannst niemanden einladen, wenn dir kein Status gehört."
+    is-owner: "<prefix><red>Du kannst den Owner nicht einladen."
+    already-member: "<prefix><red>Er ist bereits Mitglied."
+  accept:
+    accepted: "<prefix><green>Du bist dem Status <1> beigetreten."
+    invalid-invite: "<prefix><red>Die Einladung ist ungültig."
+    already-member: "<prefix><red>Du bist bereits Mitglied."
+  leave:
+    left: "<prefix><green>Du hast den Status verlassen."
+    not-member: "<prefix><red>Du bist kein Mitglied."
+    is-owner: "<prefix><red>Du kannst als Owner nicht verlassen."

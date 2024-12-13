@@ -21,19 +21,19 @@ public class ConnectionListener implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
+        NamespacedKey namespacedKey = new NamespacedKey("status", event.getPlayer().getUniqueId().toString());
         for (World world : Bukkit.getWorlds()) {
             for (Entity entity : world.getEntities()) {
-                if (entity.getPersistentDataContainer().has(new NamespacedKey("status", "custom"))) entity.remove();
+                if (entity.getPersistentDataContainer().has(namespacedKey)) {
+                    entity.remove();
+                }
             }
         }
     }
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        for (Status status : plugin.getPlayerdata().getStatuses()) {
-            if (!status.getMembers().contains(event.getPlayer().getUniqueId().toString())) continue;
-            plugin.getPlayerdata().setStatus(event.getPlayer(), status.getName());
-        }
+        plugin.getPlayerdata().reloadStatus();
     }
 
 }

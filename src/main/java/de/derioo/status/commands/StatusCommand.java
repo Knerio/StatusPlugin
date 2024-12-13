@@ -83,25 +83,29 @@ public class StatusCommand extends Command {
                     default -> sendHelp(sender);
                 }
             }
-            case 2 -> {
+            default -> {
                 switch (args[0].toLowerCase()) {
                     case "create" -> {
-                        if (args[0].length() > 10) {
-                            sender.sendMessage(config.getComponent("status.create.too-long"));
-                            return false;
+                        StringBuilder name = new StringBuilder();
+                        for (int i = 1; i < args.length; i++) {
+                            name.append(args[i]);
                         }
                         if (this.data.getStatusbyMember(player) != null) {
                             sender.sendMessage(config.getComponent("status.create.already-in-status"));
                             return false;
                         }
-                        this.data.getStatuses().add(Status.builder().name(args[1])
+                        this.data.getStatuses().add(Status.builder().name(name.toString())
                                 .members(new ArrayList<>(List.of(player.getUniqueId().toString())))
                                 .owner(player.getUniqueId().toString())
                                 .build());
-                        this.data.setStatus(player, args[1]);
+                        this.data.setStatus(player, name.toString());
                         this.data.save();
                         sender.sendMessage(config.getComponent("status.create.created"));
                     }
+                }
+            }
+            case 2 -> {
+                switch (args[0].toLowerCase()) {
                     case "clear" -> {
                         Player target = plugin.getServer().getPlayer(args[1]);
                         if (target == null) {
@@ -198,7 +202,6 @@ public class StatusCommand extends Command {
 
                 }
             }
-            default -> sendHelp(sender);
 
         }
         return false;

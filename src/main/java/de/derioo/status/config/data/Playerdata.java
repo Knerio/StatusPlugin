@@ -79,7 +79,7 @@ public class Playerdata {
         TextDisplay armorStand = player.getWorld().spawn(player.getLocation().add(0, 2, 0), TextDisplay.class, (stand) -> {
             stand.text(MiniMessage.miniMessage().deserialize(name));
             stand.setBillboard(Display.Billboard.CENTER);
-            stand.getPersistentDataContainer().set(new NamespacedKey("status", "custom"), PersistentDataType.BOOLEAN, true);
+            stand.getPersistentDataContainer().set(new NamespacedKey("status", player.getUniqueId().toString()), PersistentDataType.BOOLEAN, true);
         });
         ArmorStand temp = player.getWorld().spawn(player.getLocation().add(0, 2, 0), ArmorStand.class, (stand) -> {
             stand.setInvisible(true);
@@ -87,7 +87,7 @@ public class Playerdata {
             stand.setCanMove(false);
             stand.setGravity(false);
             stand.setSmall(true);
-            stand.getPersistentDataContainer().set(new NamespacedKey("status", "custom"), PersistentDataType.BOOLEAN, true);
+            stand.getPersistentDataContainer().set(new NamespacedKey("status", player.getUniqueId().toString()), PersistentDataType.BOOLEAN, true);
         });
         temp.addPassenger(armorStand);
         player.addPassenger(temp);
